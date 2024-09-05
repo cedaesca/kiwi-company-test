@@ -13,5 +13,10 @@
       "email": "cedaesca@gmail.com"
     }
   ],
-  "require": {}
+  "require": {
+    "php": "^8.2",
+    "symfony/http-foundation": "^7.1",
+    "symfony/routing": "^7.1",
+    "symfony/http-kernel": "^7.1"
+  }
 }
