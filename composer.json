@@ -1,0 +1,17 @@
+{
+  "name": "cedaesca/kiwi-test",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Cesar Escudero",
+      "email": "cedaesca@gmail.com"
+    }
+  ],
+  "require": {}
+}
