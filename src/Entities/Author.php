@@ -6,15 +6,14 @@ use DateTime;
 
 class Author
 {
-    private int $id;
+    private ?int $id;
     private string $name;
     private string $lastName;
     private DateTime $birthDay;
     private ?string $biography;
 
-    public function __construct(int $id, string $name, string $lastName, DateTime $birthDay, ?string $biography = null)
+    public function __construct(string $name, string $lastName, DateTime $birthDay, ?string $biography = null)
     {
-        $this->id = $id;
         $this->name = $name;
         $this->lastName = $lastName;
         $this->birthDay = $birthDay;
@@ -56,9 +55,9 @@ class Author
         return $this;
     }
 
-    public function getId(): int
+    public function getId(): ?int
     {
-        return $this->id;
+        return $this->id ?? null;
     }
 
     public function getName(): string

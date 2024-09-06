@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class FooController
 {
     public function __construct(
-        private FooService $fooService, 
+        private FooService $fooService,
         private ViewServiceInterface $viewService
     ) {}
 
