@@ -89,7 +89,8 @@ class AuthorRepository extends BaseRepository implements AuthorRepositoryInterfa
             $data['name'],
             $data['last_name'],
             new \DateTime($data['birth_day']),
-            $data['biography'] ?? null
+            $data['biography'] ?? null,
+            $data['id'] ?? null
         );
     }
 }
