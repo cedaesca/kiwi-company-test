@@ -12,8 +12,9 @@ class Author
     private DateTime $birthDay;
     private ?string $biography;
 
-    public function __construct(string $name, string $lastName, DateTime $birthDay, ?string $biography = null)
+    public function __construct(string $name, string $lastName, DateTime $birthDay, ?string $biography = null, ?int $id = null)
     {
+        $this->id = $id;
         $this->name = $name;
         $this->lastName = $lastName;
         $this->birthDay = $birthDay;
