@@ -8,11 +8,13 @@
 
 ## Correr la aplicación
 
-### Requerimientos
+### Docker
+
+#### Requerimientos
 
 - Docker
 
-### Docker
+#### Instalar la aplicación
 
 - Corre `docker-compose up --build -d`
 - Accede a la aplicación en `http://localhost:8080`
