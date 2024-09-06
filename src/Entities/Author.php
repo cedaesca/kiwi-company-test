@@ -21,6 +21,41 @@ class Author
         $this->biography = $biography;
     }
 
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function setLastName(string $lastName): self
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function setBirthDay(DateTime $birthDay): self
+    {
+        $this->birthDay = $birthDay;
+
+        return $this;
+    }
+
+    public function setBiography(?string $biography): self
+    {
+        $this->biography = $biography ?? null;
+
+        return $this;
+    }
+
     public function getId(): int
     {
         return $this->id;
