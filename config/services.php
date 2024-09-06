@@ -34,7 +34,7 @@ return function (ContainerConfigurator $configurator) {
 
     $services
         ->set(DatabaseManagerInterface::class, DatabaseManager::class)
-        ->args(['127.0.0.1', 'kiwi_test', 'root', '']);
+        ->args(['db', 'kiwi_test', 'root', 'pass']);
 
     $services
         ->set(AuthorRepositoryInterface::class, AuthorRepository::class);
