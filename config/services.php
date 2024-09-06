@@ -13,6 +13,7 @@ return function (ContainerConfigurator $configurator) {
 
     $services->load('App\\', '../src/')
         ->exclude([
+            '../migrations/',
             '../src/Entities/',
             '../src/routes.php',
         ]);
