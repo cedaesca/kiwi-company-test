@@ -6,15 +6,14 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 
 return function (ContainerConfigurator $configurator) {
     $services = $configurator->services();
-    
+
     $services->defaults()
         ->autowire(true)
         ->autoconfigure(true);
 
     $services->load('App\\', '../src/')
         ->exclude([
-            '../src/DependencyInjection/',
-            '../src/Entity/',
+            '../src/Entities/',
             '../src/routes.php',
         ]);
 
