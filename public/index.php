@@ -5,10 +5,19 @@ require_once __DIR__.'/../vendor/autoload.php';
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Controller\ArgumentResolver;
-use Symfony\Component\HttpKernel\Controller\ControllerResolver;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\HttpKernel\Controller\ContainerControllerResolver;
+
+$container = new ContainerBuilder();
+$loader = new YamlFileLoader($container, new FileLocator(__DIR__));
+$loader->load(__DIR__ . '/../config/services.yaml');
+
+$container->compile();
 
 $request = Request::createFromGlobals();
 $routes = include __DIR__.'/../src/routes.php';
@@ -18,7 +27,7 @@ $context->fromRequest($request);
 
 $matcher = new UrlMatcher($routes, $context);
 
-$controllerResolver = new ControllerResolver();
+$controllerResolver = new ContainerControllerResolver($container);
 $argumentResolver = new ArgumentResolver();
 
 try {
@@ -31,7 +40,7 @@ try {
 } catch (ResourceNotFoundException $exception) {
     $response = new Response('Página no encontrada', 404);
 } catch (Exception $exception) {
-    $response = new Response('Ocurrió un error', 500);
+    $response = new Response($exception->getMessage(), 500);
 }
 
 $response->send();
