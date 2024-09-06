@@ -20,7 +20,7 @@ $loader->load(__DIR__ . '/../config/services.yaml');
 $container->compile();
 
 $request = Request::createFromGlobals();
-$routes = include __DIR__.'/../src/routes.php';
+$routes = include __DIR__.'/../config/routes.php';
 
 $context = new RequestContext();
 $context->fromRequest($request);
