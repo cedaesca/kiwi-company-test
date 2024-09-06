@@ -2,30 +2,53 @@
 
 namespace App;
 
-use App\Controllers\FooController;
+use App\Controllers\AuthorsController;
 use Symfony\Component\Routing;
 
 $routes = new Routing\RouteCollection();
 
 $routes->add(
-    'foo', 
+    'authors.index',
     new Routing\Route(
-        '/foo', 
+        '/authors',
         [
-            '_controller' => [FooController::class, 'index']
+            '_controller' => [AuthorsController::class, 'index']
         ],
         methods: ['GET']
     )
 );
 
 $routes->add(
-    'foo_show', 
+    'authors.create',
     new Routing\Route(
-        '/foo/show', 
+        '/authors/create',
         [
-            '_controller' => [FooController::class, 'show']
+            '_controller' => [AuthorsController::class, 'create']
         ],
-        methods: ['GET']
+        methods: ['GET'],
+    )
+);
+
+$routes->add(
+    'authors.store',
+    new Routing\Route(
+        '/authors',
+        [
+            '_controller' => [AuthorsController::class, 'store']
+        ],
+        methods: ['POST'],
+    )
+);
+
+$routes->add(
+    'authors.show',
+    new Routing\Route(
+        '/authors/{id}',
+        [
+            '_controller' => [AuthorsController::class, 'show']
+        ],
+        methods: ['GET'],
+        requirements: ['id' => '\d+']
     )
 );
 

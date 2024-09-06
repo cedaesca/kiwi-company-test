@@ -31,7 +31,7 @@ class App
         } catch (ResourceNotFoundException $exception) {
             return new Response('Página no encontrada', 404);
         } catch (\Exception $exception) {
-            return new Response('Ocurrió un error', 500);
+            return new Response('Ocurrió un error: ' . $exception->getMessage(), 500);
         }
     }
 }
