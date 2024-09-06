@@ -8,14 +8,14 @@ use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\Controller\ContainerControllerResolver;
 use App\Core\App;
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 
 $container = new ContainerBuilder();
 
-$loader = new YamlFileLoader($container, new FileLocator(__DIR__));
-$loader->load(__DIR__ . '/../config/services.yaml');
+$loader = new PhpFileLoader($container, new FileLocator(__DIR__));
+$loader->load(__DIR__ . '/../config/services.php');
 
 $container->compile();
 

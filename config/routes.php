@@ -18,4 +18,15 @@ $routes->add(
     )
 );
 
+$routes->add(
+    'foo_show', 
+    new Routing\Route(
+        '/foo/show', 
+        [
+            '_controller' => [FooController::class, 'show']
+        ],
+        methods: ['GET']
+    )
+);
+
 return $routes;
