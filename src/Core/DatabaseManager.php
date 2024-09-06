@@ -10,8 +10,12 @@ class DatabaseManager implements DatabaseManagerInterface
 {
     private PDO $connection;
 
-    public function __construct(string $host, string $dbname, string $user, string $password)
+    public function __construct(?string $host, ?string $dbname, ?string $user, ?string $password, ?PDO $connection = null)
     {
+        if ($connection) {
+            return $this->connection = $connection;
+        }
+
         try {
             $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
             $this->connection = new PDO($dsn, $user, $password);

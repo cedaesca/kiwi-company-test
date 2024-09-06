@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Core;
 
 use App\Core\App;
 use PHPUnit\Framework\Attributes\Test;
@@ -29,39 +29,39 @@ class AppTest extends TestCase
     public function handlesValidRoute(): void
     {
         $expectedResponse = new Response('Foo!');
-        
-        $controller = function() use ($expectedResponse) {
+
+        $controller = function () use ($expectedResponse) {
             return $expectedResponse;
         };
 
         $matcher = $this->createMock(UrlMatcherInterface::class);
-        
+
         $matcher
             ->expects($this->once())
             ->method('match')
             ->willReturn([
                 '_controller' => $controller,
             ]);
-        
+
         $matcher
             ->expects($this->once())
             ->method('getContext')
             ->willReturn($this->createMock(RequestContext::class));
-        
+
         $controllerResolver = $this->createMock(ControllerResolverInterface::class);
-        
+
         $controllerResolver
             ->expects($this->once())
             ->method('getController')
             ->willReturn($controller);
-        
+
         $argumentResolver = $this->createMock(ArgumentResolverInterface::class);
-        
+
         $argumentResolver
             ->expects($this->once())
             ->method('getArguments')
             ->willReturn([]);
-        
+
         $app = new App($matcher, $controllerResolver, $argumentResolver);
 
         $response = $app->handle(new Request());
@@ -78,12 +78,12 @@ class AppTest extends TestCase
             ->expects($this->once())
             ->method('match')
             ->willThrowException($exception);
-            
+
         $matcher
             ->expects($this->once())
             ->method('getContext')
             ->willReturn($this->createMock(RequestContext::class));
-            
+
         $controllerResolver = $this->createMock(ControllerResolverInterface::class);
         $argumentResolver = $this->createMock(ArgumentResolverInterface::class);
 
