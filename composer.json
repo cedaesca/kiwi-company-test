@@ -17,6 +17,9 @@
     "php": "^8.2",
     "symfony/http-foundation": "^7.1",
     "symfony/routing": "^7.1",
-    "symfony/http-kernel": "^7.1"
+    "symfony/http-kernel": "^7.1",
+    "symfony/dependency-injection": "^7.1",
+    "symfony/config": "^7.1",
+    "symfony/yaml": "^7.1"
   }
 }
